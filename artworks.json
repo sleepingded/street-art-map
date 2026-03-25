@@ -1,16 +1,10 @@
 [
  {
-  "name": "Graffiti Dragon",
-  "lat": 50.1109,
-  "lng": 8.6821,
-  "image": "dragon.jpg",
+  "name": "LAZY",
+  "lat": 54.068713,
+  "lng": 54.934768,
+  "image": "tunnel.jpg",
   "description": "Работа локального художника"
- },
- {
-  "name": "Street Mural",
-  "lat": 50.115,
-  "lng": 8.69,
-  "image": "mural.jpg",
-  "description": "Большой мурал на стене"
  }
+ 
 ]
