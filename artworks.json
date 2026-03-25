@@ -1,9 +1,25 @@
 [
  {
-  "name": "LAZY",
+  "name": "meat",
   "lat": 54.068713,
   "lng": 54.934768,
-  "image": "tunnel.jpg",
+  "image": "images/tunnel.jpg",
+  "description": "Работа локального художника"
+ },
+
+ {
+  "name": "watermelon",
+  "lat": 54.068540,
+  "lng":  54.938609,
+  "image": "images/watermelon.jpg",
+  "description": "Работа локального художника"
+ },
+
+ {
+  "name": "gagarin",
+  "lat": 54.068740,
+  "lng": 54.922630,
+  "image": "images/gagarin.jpg",
   "description": "Работа локального художника"
  }
  

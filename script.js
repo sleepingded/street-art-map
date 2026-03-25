@@ -1,6 +1,6 @@
 var map = L.map('map').setView([54.0611381, 54.9323558], 13);
 
-L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
  maxZoom: 19
 }).addTo(map);
 
@@ -10,14 +10,58 @@ fetch("artworks.json")
 
  data.forEach(art => {
 
-  var marker = L.marker([art.lat, art.lng]).addTo(map);
+  var marker = L.marker([art.lat, art.lng], {icon: graffitiIcon}).addTo(map);
 
   marker.bindPopup(`
-   <h3>${art.name}</h3>
-   <img src="${art.image}" width="200">
-   <p>${art.description}</p>
-  `);
+<div class="popup">
+
+<img src="${art.image}" />
+
+<h3>${art.name}</h3>
+
+<p>${art.description}</p>
+
+</div>
+`);
 
  });
 
 });
+
+const graffitiIcon = L.icon({
+iconUrl: "icons/spray.png",
+iconSize: [32,32],
+iconAnchor: [16,32]
+});
+
+// Кнопка добавить точку
+
+// let addMode = false;
+
+// document.getElementById("addPointBtn").onclick = function() {
+
+//  addMode = true;
+//  alert("Кликните на карту чтобы добавить точку");
+
+// };
+
+// map.on("click", function(e){
+
+//  if(!addMode) return;
+
+//  const lat = e.latlng.lat.toFixed(6);
+//  const lng = e.latlng.lng.toFixed(6);
+
+//  L.popup()
+//   .setLatLng(e.latlng)
+//   .setContent(`
+//   <b>Новая точка</b><br>
+//   Lat: ${lat}<br>
+//   Lng: ${lng}<br><br>
+//   Скопируйте координаты
+//   `)
+//   .openOn(map);
+
+//  addMode = false;
+
+// });
