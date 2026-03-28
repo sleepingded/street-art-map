@@ -77,14 +77,19 @@ ART_OBJECTS.forEach((obj, i) => {
   listItems.appendChild(li);
 });
 
+const isMobile = () => window.innerWidth <= 600;
+
 function openList() {
+  if (isMobile()) closePanel();
   listPanel.classList.add('open');
   listToggle.classList.add('active');
+  overlay.classList.add('visible');
 }
 
 function closeList() {
   listPanel.classList.remove('open');
   listToggle.classList.remove('active');
+  if (!panel.classList.contains('open')) overlay.classList.remove('visible');
 }
 
 listToggle.addEventListener('click', () => {
@@ -99,6 +104,9 @@ const panel   = document.getElementById('panel');
 const overlay = document.getElementById('overlay');
 
 function openPanel(obj, idx) {
+  // На мобильном закрываем список
+  if (isMobile()) closeList();
+
   // Переключаем активный маркер
   if (activeMarkerEl) activeMarkerEl.classList.remove('active');
   activeMarkerEl = document.querySelector(`.custom-marker[data-i="${idx}"]`);
@@ -124,12 +132,12 @@ function openPanel(obj, idx) {
 
   // Открываем панель
   panel.classList.add('open');
-  overlay.classList.add('visible');
+  if (isMobile()) overlay.classList.add('visible');
 }
 
 function closePanel() {
   panel.classList.remove('open');
-  overlay.classList.remove('visible');
+  if (!listPanel.classList.contains('open')) overlay.classList.remove('visible');
   if (activeMarkerEl) {
     activeMarkerEl.classList.remove('active');
     activeMarkerEl = null;
@@ -169,5 +177,8 @@ document.getElementById('panel-img').addEventListener('click', function () {
   if (this.src) openLightbox(this.src);
 });
 document.getElementById('close-btn').addEventListener('click', closePanel);
-overlay.addEventListener('click', closePanel);
+overlay.addEventListener('click', () => {
+  closePanel();
+  closeList();
+});
 map.on('click', closePanel);

@@ -446,7 +446,47 @@ header .count span {
 
 /* ─── АДАПТИВ ─────────────────────────────────────────── */
 @media (max-width: 600px) {
-  #panel { width: 100%; border-left: none; }
-  #overlay { display: block; opacity: 0; pointer-events: none; transition: opacity 0.3s; }
-  #overlay.visible { opacity: 1; pointer-events: all; }
+  #panel {
+    width: 100%;
+    height: 85dvh;
+    top: auto;
+    bottom: 0;
+    right: 0;
+    border-left: none;
+    border-top: 1px solid var(--border);
+    transform: translateY(100%);
+    transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  #panel.open {
+    transform: translateY(0);
+  }
+
+  #list-panel {
+    width: 100%;
+    height: 85dvh;
+    top: auto;
+    bottom: 0;
+    left: 0;
+    border-right: none;
+    border-top: 1px solid var(--border);
+    transform: translateY(100%);
+    transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  #list-panel.open {
+    transform: translateY(0);
+  }
+
+  #overlay {
+    display: block;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s;
+  }
+
+  #overlay.visible {
+    opacity: 1;
+    pointer-events: all;
+  }
 }
