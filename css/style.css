@@ -1,0 +1,243 @@
+/* ─── ПЕРЕМЕННЫЕ ─────────────────────────────────────── */
+:root {
+  --bg:        #0d0d0d;
+  --surface:   #161616;
+  --border:    #2a2a2a;
+  --accent:    #e8ff00;       /* кислотно-жёлтый */
+  --accent2:   #ff3c3c;       /* красный акцент */
+  --text:      #e0e0e0;
+  --muted:     #666;
+  --font-head: 'Bebas Neue', sans-serif;
+  --font-body: 'IBM Plex Mono', monospace;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body);
+  height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+/* ─── ШАПКА ──────────────────────────────────────────── */
+header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 12px 24px;
+  border-bottom: 1px solid var(--border);
+  background: var(--surface);
+  z-index: 1000;
+  flex-shrink: 0;
+}
+
+header h1 {
+  font-family: var(--font-head);
+  font-size: 2rem;
+  letter-spacing: 0.08em;
+  color: var(--accent);
+  text-transform: uppercase;
+  line-height: 1;
+}
+
+header .count {
+  font-size: 0.7rem;
+  color: var(--muted);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-left: auto;
+}
+
+header .count span {
+  color: var(--accent);
+  font-weight: 600;
+}
+
+/* ─── КАРТА ───────────────────────────────────────────── */
+#map {
+  flex: 1;
+  width: 100%;
+  background: #111;
+}
+
+.leaflet-control-attribution {
+  font-size: 9px !important;
+  opacity: 0.4;
+  background: transparent !important;
+  color: var(--muted) !important;
+}
+
+.leaflet-control-attribution a { color: var(--muted) !important; }
+
+/* ─── МАРКЕР ──────────────────────────────────────────── */
+.custom-marker {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: var(--accent);
+  border: 2px solid var(--bg);
+  box-shadow: 0 0 0 2px var(--accent), 0 0 16px rgba(232,255,0,0.5);
+  cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.custom-marker:hover {
+  transform: scale(1.4);
+  box-shadow: 0 0 0 2px var(--accent), 0 0 28px rgba(232,255,0,0.8);
+}
+
+.custom-marker.active {
+  background: var(--accent2);
+  box-shadow: 0 0 0 2px var(--accent2), 0 0 24px rgba(255,60,60,0.7);
+}
+
+/* ─── БОКОВАЯ ПАНЕЛЬ ──────────────────────────────────── */
+#panel {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 380px;
+  height: 100dvh;
+  background: var(--surface);
+  border-left: 1px solid var(--border);
+  z-index: 2000;
+  display: flex;
+  flex-direction: column;
+  transform: translateX(100%);
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  overflow: hidden;
+}
+
+#panel.open {
+  transform: translateX(0);
+}
+
+.panel-photo {
+  width: 100%;
+  aspect-ratio: 4/3;
+  object-fit: cover;
+  display: block;
+  flex-shrink: 0;
+  background: #1a1a1a;
+}
+
+.panel-photo-placeholder {
+  width: 100%;
+  aspect-ratio: 4/3;
+  background: repeating-linear-gradient(
+    45deg,
+    #1a1a1a 0px, #1a1a1a 10px,
+    #141414 10px, #141414 20px
+  );
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--muted);
+  font-size: 0.75rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  flex-shrink: 0;
+}
+
+.panel-body {
+  padding: 24px;
+  flex: 1;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: var(--border) transparent;
+}
+
+.panel-tag {
+  display: inline-block;
+  font-size: 0.65rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--accent);
+  background: rgba(232,255,0,0.08);
+  border: 1px solid rgba(232,255,0,0.25);
+  padding: 2px 8px;
+  margin-bottom: 12px;
+}
+
+.panel-title {
+  font-family: var(--font-head);
+  font-size: 2.2rem;
+  letter-spacing: 0.06em;
+  line-height: 1.05;
+  color: #fff;
+  margin-bottom: 16px;
+  text-transform: uppercase;
+}
+
+.panel-desc {
+  font-size: 0.8rem;
+  line-height: 1.7;
+  color: var(--text);
+  margin-bottom: 24px;
+}
+
+.panel-meta {
+  border-top: 1px solid var(--border);
+  padding-top: 16px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.meta-item label {
+  display: block;
+  font-size: 0.6rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 4px;
+}
+
+.meta-item span {
+  font-size: 0.78rem;
+  color: var(--text);
+}
+
+#close-btn {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  width: 32px;
+  height: 32px;
+  background: rgba(0,0,0,0.6);
+  border: 1px solid var(--border);
+  color: var(--text);
+  font-size: 1rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+  transition: background 0.15s, color 0.15s;
+}
+
+#close-btn:hover {
+  background: var(--accent2);
+  color: #fff;
+  border-color: var(--accent2);
+}
+
+/* ─── ОВЕРЛЕЙ (мобайл) ────────────────────────────────── */
+#overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.5);
+  z-index: 1999;
+}
+
+/* ─── АДАПТИВ ─────────────────────────────────────────── */
+@media (max-width: 600px) {
+  #panel { width: 100%; border-left: none; }
+  #overlay { display: block; opacity: 0; pointer-events: none; transition: opacity 0.3s; }
+  #overlay.visible { opacity: 1; pointer-events: all; }
+}
