@@ -91,6 +91,37 @@ function closePanel() {
   }
 }
 
-document.getElementById('close-btn').addEventListener('click', closePanel);
+/* ─── ЛАЙТБОКС ────────────────────────────────────────── */
+
+const lightbox    = document.getElementById('lightbox');
+const lightboxImg = document.getElementById('lightbox-img');
+
+function openLightbox(src) {
+  lightboxImg.src = src;
+  lightbox.classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeLightbox() {
+  lightbox.classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+// Клик по фону лайтбокса закрывает его
+lightbox.addEventListener('click', (e) => {
+  if (e.target !== lightboxImg) closeLightbox();
+});
+
+document.getElementById('lightbox-close').addEventListener('click', closeLightbox);
+
+// Закрытие по Escape
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') closeLightbox();
+});
+
+// Клик по фото в панели открывает лайтбокс
+document.getElementById('panel-img').addEventListener('click', function () {
+  if (this.src) openLightbox(this.src);
+});
 overlay.addEventListener('click', closePanel);
 map.on('click', closePanel);
