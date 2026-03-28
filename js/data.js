@@ -27,7 +27,7 @@ const ART_OBJECTS = [
     title: "Гагарин",
     author: "LAZY aka Лентяй",
     date: "Март 2019",
-    desc: "В процессе заполнения",
+    desc: "",
     photo: "photos/gagarin.jpg"
   },
   {
@@ -36,7 +36,7 @@ const ART_OBJECTS = [
     title: "Растаман",
     author: "LAZY aka Лентяй",
     date: "Апрель 2015",
-    desc: "В процессе заполнения",
+    desc: "",
     photo: "photos/tunnel.jpg"
   },
   {
@@ -45,7 +45,61 @@ const ART_OBJECTS = [
     title: "Арбуз",
     author: "LAZY aka Лентяй",
     date: "Февраль 2020",
-    desc: "В процессе заполнения",
+    desc: "",
     photo: "photos/watermelon.jpg"
-  }
+  },
+  {
+    lat: 54.069047, 
+    lng: 54.935994,
+    title: "Забор",
+    author: "LAZY aka Лентяй",
+    date: "Июнь 2021",
+    desc: "",
+    photo: "photos/fence.jpg"
+  },
+  {
+    lat: 54.068271, 
+    lng: 54.933794,
+    title: "Мясо",
+    author: "LAZY aka Лентяй",
+    date: "Ноябрь 2021",
+    desc: "",
+    photo: "photos/meat.jpg"
+  },
+  {
+    lat: 54.059694, 
+    lng: 54.929119,
+    title: "Гомер",
+    author: "LAZY aka Лентяй",
+    date: "Июль 2016",
+    desc: "",
+    photo: "photos/homer_1.jpg"
+  },
+  {
+    lat: 54.079424, 
+    lng: 54.928458,
+    title: "Рыба",
+    author: "LAZY aka Лентяй",
+    date: "Март 2016",
+    desc: "",
+    photo: "photos/fish.jpg"
+  },
+  {
+    lat: 54.064474, 
+    lng: 54.924015,
+    title: "Магаз",
+    author: "LAZY aka Лентяй + Graff",
+    date: "Сентябрь 2015",
+    desc: "",
+    photo: "photos/store.jpg"
+  },
+  {
+    lat: 54.069708, 
+    lng: 54.926426,
+    title: "Енот",
+    author: "LAZY aka Лентяй",
+    date: "Июль 2015",
+    desc: "",
+    photo: "photos/raccon.jpg"
+  },
 ];
