@@ -58,14 +58,21 @@ const listItems  = document.getElementById('list-items');
 // Наполняем список
 ART_OBJECTS.forEach((obj, i) => {
   const li = document.createElement('li');
+
+  const thumb = obj.photo
+    ? `<img class="list-item-thumb" src="${obj.photo}" alt="" />`
+    : `<div class="list-item-thumb-placeholder"></div>`;
+
   li.innerHTML = `
-    <div class="list-item-title">${obj.title}</div>
-    <div class="list-item-meta">${[obj.author, obj.date].filter(Boolean).join(' · ')}</div>
+    ${thumb}
+    <div class="list-item-info">
+      <div class="list-item-title">${obj.title}</div>
+      <div class="list-item-meta">${[obj.author, obj.date].filter(Boolean).join(' · ')}</div>
+    </div>
   `;
   li.addEventListener('click', () => {
     map.setView([obj.lat, obj.lng], 16, { animate: true });
     openPanel(obj, i);
-    closeList();
   });
   listItems.appendChild(li);
 });

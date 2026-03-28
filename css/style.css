@@ -314,10 +314,13 @@ header .count span {
 }
 
 #list-items li {
-  padding: 14px 20px;
+  padding: 12px 16px;
   border-bottom: 1px solid var(--border);
   cursor: pointer;
   transition: background 0.12s;
+  display: flex;
+  align-items: center;
+  gap: 14px;
 }
 
 #list-items li:hover {
@@ -328,6 +331,33 @@ header .count span {
   color: var(--accent);
 }
 
+.list-item-thumb {
+  width: 56px;
+  height: 56px;
+  object-fit: cover;
+  flex-shrink: 0;
+  display: block;
+  background: #1a1a1a;
+}
+
+.list-item-thumb-placeholder {
+  width: 56px;
+  height: 56px;
+  flex-shrink: 0;
+  background: repeating-linear-gradient(
+    45deg,
+    #1a1a1a 0px, #1a1a1a 5px,
+    #141414 5px, #141414 10px
+  );
+}
+
+.list-item-info {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 0;
+}
+
 .list-item-title {
   font-family: var(--font-head);
   font-size: 1.1rem;
@@ -335,7 +365,9 @@ header .count span {
   text-transform: uppercase;
   color: #fff;
   transition: color 0.12s;
-  margin-bottom: 4px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .list-item-meta {
