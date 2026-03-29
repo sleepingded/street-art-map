@@ -111,6 +111,52 @@ header .count span {
   box-shadow: 0 0 0 2px var(--accent2), 0 0 24px rgba(255,60,60,0.7);
 }
 
+/* ─── ГАЛЕРЕЯ ─────────────────────────────────────────── */
+#panel-gallery {
+  position: relative;
+  flex-shrink: 0;
+}
+
+.gallery-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 32px;
+  height: 48px;
+  background: rgba(0,0,0,0.55);
+  border: 1px solid rgba(255,255,255,0.1);
+  color: #fff;
+  font-size: 1.4rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 5;
+  transition: background 0.15s;
+  padding: 0;
+  line-height: 1;
+}
+
+.gallery-btn:hover {
+  background: rgba(0,0,0,0.85);
+}
+
+#gallery-prev { left: 0; }
+#gallery-next { right: 0; }
+
+#gallery-counter {
+  position: absolute;
+  bottom: 8px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 0.65rem;
+  letter-spacing: 0.15em;
+  color: rgba(255,255,255,0.7);
+  background: rgba(0,0,0,0.5);
+  padding: 2px 8px;
+  pointer-events: none;
+}
+
 /* ─── БОКОВАЯ ПАНЕЛЬ ──────────────────────────────────── */
 #panel {
   position: fixed;

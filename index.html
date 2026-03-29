@@ -31,8 +31,14 @@
   <!-- Боковая панель -->
   <div id="panel">
     <button id="close-btn" title="Закрыть">✕</button>
-    <img id="panel-img" class="panel-photo" src="" alt="" style="display:none" />
-    <div id="panel-placeholder" class="panel-photo-placeholder">нет фото</div>
+    <!-- Галерея -->
+    <div id="panel-gallery">
+      <img id="panel-img" class="panel-photo" src="" alt="" style="display:none" />
+      <div id="panel-placeholder" class="panel-photo-placeholder">нет фото</div>
+      <button id="gallery-prev" class="gallery-btn" style="display:none">&#8249;</button>
+      <button id="gallery-next" class="gallery-btn" style="display:none">&#8250;</button>
+      <div id="gallery-counter" style="display:none"></div>
+    </div>
     <div class="panel-body">
       <div id="panel-tag" class="panel-tag">стрит-арт</div>
       <div id="panel-title" class="panel-title"></div>

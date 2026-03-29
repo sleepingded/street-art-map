@@ -12,9 +12,9 @@
    → нажми на координаты → они скопируются в буфер
    Первое число — lat, второе — lng.
 
-   Поле photo:
+   Поле photos:
    Положи фото в папку photos/ рядом с index.html
-   и укажи путь: "photos/название_файла.jpg"
+   и укажи путь: ["photos/название_файла.jpg"]
    Или вставь прямую ссылку на фото из интернета.
    Оставь "" если фото пока нет.
 
@@ -28,7 +28,7 @@ const ART_OBJECTS = [
     authors: [],
     date: "2019-03",
     desc: "",
-    photo: "photos/gagarin.jpg"
+    photos: ["photos/gagarin.jpg"]
   },
   {
     lat: 54.068713,
@@ -37,7 +37,7 @@ const ART_OBJECTS = [
     authors: ["LAZY aka Лентяй"],
     date: "2015-04",
     desc: "",
-    photo: "photos/tunnel.jpg"
+    photos: ["photos/tunnel.jpg"]
   },
   {
     lat: 54.068540,
@@ -46,7 +46,7 @@ const ART_OBJECTS = [
     authors: ["LAZY aka Лентяй"],
     date: "2020-02",
     desc: "",
-    photo: "photos/watermelon.jpg"
+    photos: ["photos/watermelon.jpg"]
   },
   {
     lat: 54.069047, 
@@ -55,7 +55,7 @@ const ART_OBJECTS = [
     authors: ["LAZY aka Лентяй"],
     date: "2021-06",
     desc: "",
-    photo: "photos/fence.jpg"
+    photos: ["photos/fence.jpg"]
   },
   {
     lat: 54.068271, 
@@ -64,7 +64,7 @@ const ART_OBJECTS = [
     authors: ["LAZY aka Лентяй"],
     date: "2021-11",
     desc: "",
-    photo: "photos/meat.jpg"
+    photos: ["photos/meat.jpg"]
   },
   {
     lat: 54.059694, 
@@ -73,7 +73,7 @@ const ART_OBJECTS = [
     authors: ["LAZY aka Лентяй"],
     date: "2016-07",
     desc: "",
-    photo: "photos/homer_1.jpg"
+    photos: ["photos/homer_1.jpg"]
   },
   {
     lat: 54.079424, 
@@ -82,7 +82,7 @@ const ART_OBJECTS = [
     authors: ["LAZY aka Лентяй"],
     date: "2016-03",
     desc: "",
-    photo: "photos/fish.jpg"
+    photos: ["photos/fish.jpg"]
   },
   {
     lat: 54.064474, 
@@ -91,16 +91,16 @@ const ART_OBJECTS = [
     authors: ["LAZY aka Лентяй", "Graff"],
     date: "2015-09",
     desc: "",
-    photo: "photos/store.jpg"
+    photos: ["photos/store.jpg"]
   },
   {
     lat: 54.069708, 
     lng: 54.926426,
     title: "Енот",
     authors: ["LAZY aka Лентяй"],
-    date: "2015-07",
+    date: "2015-07-11",
     desc: "",
-    photo: "photos/raccon.jpg"
+    photos: ["photos/raccon.jpg"]
   },
   {
     title: "Курение убивает",
@@ -108,16 +108,69 @@ const ART_OBJECTS = [
     date: "2022-05",
     destroyed: true,
     desc: "Точное местоположение неизвестно",
-    photo: "photos/smoking.jpg"
+    photos: ["photos/smoking.jpg"]
   },
   {
     lat: 54.069708, 
     lng: 54.926426,
     title: "Выживыший",
     authors: ["LAZY aka Лентяй"],
-    date: "2015-07",
-    destroyed: true,
+    date: "2016-06-06",
     desc: "",
-    photo: "photos/survivor.jpg"
+    photos: ["photos/survivor.jpg"]
+  },
+  {
+    lat: 54.071780,
+    lng: 54.913800,
+    title: "Хэллоуин",
+    authors: ["LAZY aka Лентяй"],
+    date: "2016-10-28",
+    desc: "",
+    photos: ["photos/pumpkin.jpg"]
+  },
+  {
+    lat: 54.070768, 
+    lng: 54.913177,
+    title: "Гарфилд",
+    authors: ["LAZY aka Лентяй"],
+    date: "2017-07-08",
+    desc: "",
+    photos: ["photos/garfield_1.jpg", "photos/garfield_2.jpg"]
+  },
+  {
+    lat: 54.070836,  
+    lng: 54.943891,
+    title: "Пули",
+    authors: ["LAZY aka Лентяй"],
+    date: "2016-04-23",
+    desc: "",
+    photos: ["photos/bullets_1.jpg", "photos/bullets_2.jpg"]
+  },
+  {
+    lat: 54.070836,  
+    lng: 54.943891,
+    title: "Свинья",
+    authors: ["LAZY aka Лентяй"],
+    date: "2016-04-23",
+    desc: "",
+    photos: ["photos/bullets_1.jpg"]
+  },
+  {
+    lat: 54.068677, 
+    lng: 54.935669,
+    title: "Че",
+    authors: ["LAZY aka Лентяй"],
+    date: "2015-08-05",
+    desc: "",
+    photos: ["photos/che_1.jpg", "photos/che_2.jpg"]
+  },
+  {
+    lat: 54.070906, 
+    lng: 54.923647,
+    title: "Дружба",
+    authors: ["LAZY aka Лентяй", "Graff"],
+    date: "2015-10-20",
+    desc: "",
+    photos: ["photos/friendship_1.jpg"]
   },
 ];

@@ -190,8 +190,9 @@ function createListItem(obj, i) {
   const li = document.createElement('li');
   const noCoords = !obj.lat || !obj.lng;
 
-  const thumb = obj.photo
-    ? `<img class="list-item-thumb" src="${obj.photo}" alt="" />`
+  const firstPhoto = obj.photos && obj.photos.length ? obj.photos[0] : null;
+  const thumb = firstPhoto
+    ? `<img class="list-item-thumb" src="${firstPhoto}" alt="" />`
     : `<div class="list-item-thumb-placeholder"></div>`;
 
   const authorStr = obj.authors && obj.authors.length > 0
@@ -275,6 +276,63 @@ listToggle.addEventListener('click', () => {
 
 listClose.addEventListener('click', closeList);
 
+/* ─── ГАЛЕРЕЯ ───────────────────────────────────────────── */
+
+const galleryImg     = document.getElementById('panel-img');
+const galleryPh      = document.getElementById('panel-placeholder');
+const galleryPrev    = document.getElementById('gallery-prev');
+const galleryNext    = document.getElementById('gallery-next');
+const galleryCounter = document.getElementById('gallery-counter');
+
+let galleryPhotos = [];
+let galleryIndex  = 0;
+
+function initGallery(photos) {
+  galleryPhotos = photos;
+  galleryIndex  = 0;
+  renderGallery();
+}
+
+function renderGallery() {
+  const total = galleryPhotos.length;
+
+  if (total === 0) {
+    galleryImg.style.display     = 'none';
+    galleryPh.style.display      = 'flex';
+    galleryPrev.style.display    = 'none';
+    galleryNext.style.display    = 'none';
+    galleryCounter.style.display = 'none';
+    return;
+  }
+
+  galleryImg.src               = galleryPhotos[galleryIndex];
+  galleryImg.style.display     = 'block';
+  galleryPh.style.display      = 'none';
+
+  const hasMany = total > 1;
+  galleryPrev.style.display    = hasMany ? 'flex' : 'none';
+  galleryNext.style.display    = hasMany ? 'flex' : 'none';
+  galleryCounter.style.display = hasMany ? 'block' : 'none';
+  galleryCounter.textContent   = `${galleryIndex + 1} / ${total}`;
+}
+
+galleryPrev.addEventListener('click', (e) => {
+  e.stopPropagation();
+  galleryIndex = (galleryIndex - 1 + galleryPhotos.length) % galleryPhotos.length;
+  renderGallery();
+});
+
+galleryNext.addEventListener('click', (e) => {
+  e.stopPropagation();
+  galleryIndex = (galleryIndex + 1) % galleryPhotos.length;
+  renderGallery();
+});
+
+// Клик по фото открывает лайтбокс
+galleryImg.addEventListener('click', () => {
+  if (galleryImg.src) openLightbox(galleryImg.src);
+});
+
 /* ─── ПАНЕЛЬ ───────────────────────────────────────────── */
 
 const panel   = document.getElementById('panel');
@@ -289,17 +347,9 @@ function openPanel(obj, idx) {
   activeMarkerEl = document.querySelector(`.custom-marker[data-i="${idx}"]`);
   if (activeMarkerEl) activeMarkerEl.classList.add('active');
 
-  // Фото или заглушка
-  const img = document.getElementById('panel-img');
-  const ph  = document.getElementById('panel-placeholder');
-  if (obj.photo) {
-    img.src = obj.photo;
-    img.style.display = 'block';
-    ph.style.display  = 'none';
-  } else {
-    img.style.display = 'none';
-    ph.style.display  = 'flex';
-  }
+  // Галерея
+  const photos = obj.photos && obj.photos.length ? obj.photos : [];
+  initGallery(photos);
 
   document.getElementById('panel-title').textContent = obj.title;
   document.getElementById('panel-desc').textContent  = obj.desc;
@@ -381,10 +431,6 @@ document.addEventListener('keydown', (e) => {
   if (e.key === 'Escape') closeLightbox();
 });
 
-// Клик по фото в панели открывает лайтбокс
-document.getElementById('panel-img').addEventListener('click', function () {
-  if (this.src) openLightbox(this.src);
-});
 document.getElementById('close-btn').addEventListener('click', closePanel);
 overlay.addEventListener('click', () => {
   closePanel();
