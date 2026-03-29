@@ -4,6 +4,14 @@
    изменить поведение карты или панели.
    ══════════════════════════════════════════════════════════ */
 
+// Передаём высоту шапки в CSS чтобы панели начинались под ней
+const headerEl = document.querySelector('header');
+function setHeaderHeight() {
+  document.documentElement.style.setProperty('--header-h', headerEl.offsetHeight + 'px');
+}
+setHeaderHeight();
+window.addEventListener('resize', setHeaderHeight);
+
 /* ─── ФОРМАТИРОВАНИЕ ДАТЫ ──────────────────────────────── */
 
 function formatDate(raw) {
