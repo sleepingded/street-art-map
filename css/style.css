@@ -224,7 +224,6 @@ header .count span {
   color: var(--muted);
   font-style: italic;
   border-style: dashed;
-}
   display: block;
   font-size: 0.6rem;
   letter-spacing: 0.2em;
@@ -518,7 +517,35 @@ header .count span {
   letter-spacing: 0.1em;
 }
 
-/* ─── ЛАЙТБОКС ───────────────────────────────────────── */
+/* Уничтоженные работы */
+.destroyed-badge {
+  display: inline-block;
+  font-size: 0.62rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--accent2);
+  border: 1px solid var(--accent2);
+  padding: 2px 8px;
+  margin-bottom: 10px;
+  opacity: 0.85;
+}
+
+.panel-title.is-destroyed {
+  /* text-decoration: line-through; */
+  opacity: 0.5;
+}
+
+.list-item-title.is-destroyed {
+  /* text-decoration: line-through; */
+  opacity: 0.45;
+}
+
+.cluster-item-title.is-destroyed {
+  /* text-decoration: line-through; */
+  opacity: 0.45;
+}
+
+
 #lightbox {
   display: none;
   position: fixed;

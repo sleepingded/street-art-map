@@ -88,8 +88,8 @@ function openClusterPopup(group) {
       ? obj.authors.join(', ')
       : 'неизвестен';
     li.innerHTML = `
-      <div class="cluster-item-title">${obj.title}</div>
-      <div class="cluster-item-meta">${[authorStr, obj.date].filter(Boolean).join(' · ')}</div>
+      <div class="cluster-item-title ${obj.destroyed ? 'is-destroyed' : ''}">${obj.title}</div>
+      <div class="cluster-item-meta">${[authorStr, obj.date].filter(Boolean).join(' · ')}${obj.destroyed ? ' · <span style="color:var(--accent2)">уничтожено</span>' : ''}</div>
     `;
     li.addEventListener('click', () => {
       closeClusterPopup();
@@ -133,8 +133,9 @@ ART_OBJECTS.forEach((obj, i) => {
   li.innerHTML = `
     ${thumb}
     <div class="list-item-info">
-      <div class="list-item-title">${obj.title}</div>
+      <div class="list-item-title ${obj.destroyed ? 'is-destroyed' : ''}">${obj.title}</div>
       <div class="list-item-meta" data-date="${obj.date || ''}">${metaParts.join(' · ')}</div>
+      ${obj.destroyed ? '<div class="list-item-no-coords" style="color:var(--accent2)">уничтожено</div>' : ''}
       ${noCoords ? '<div class="list-item-no-coords">координаты неизвестны</div>' : ''}
     </div>
   `;
@@ -195,6 +196,21 @@ function openPanel(obj, idx) {
 
   document.getElementById('panel-title').textContent = obj.title;
   document.getElementById('panel-desc').textContent  = obj.desc;
+
+  // Пометка «уничтожено»
+  const existingBadge = document.getElementById('destroyed-badge');
+  if (existingBadge) existingBadge.remove();
+  const titleEl = document.getElementById('panel-title');
+  if (obj.destroyed) {
+    titleEl.classList.add('is-destroyed');
+    const badge = document.createElement('div');
+    badge.id = 'destroyed-badge';
+    badge.className = 'destroyed-badge';
+    badge.textContent = 'уничтожено';
+    titleEl.insertAdjacentElement('beforebegin', badge);
+  } else {
+    titleEl.classList.remove('is-destroyed');
+  }
 
   // Авторы
   const authorsEl = document.getElementById('panel-authors');

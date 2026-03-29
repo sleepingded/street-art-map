@@ -25,7 +25,7 @@ const ART_OBJECTS = [
     lat: 54.068740,
     lng: 54.922630,
     title: "Гагарин",
-    authors: ["LAZY aka Лентяй"],
+    authors: [],
     date: "Март 2019",
     desc: "",
     photo: "photos/gagarin.jpg"
@@ -106,6 +106,7 @@ const ART_OBJECTS = [
     title: "Курение убивает",
     authors: ["LAZY aka Лентяй"],
     date: "Май 2022",
+    destroyed: true,
     desc: "Точное местоположение неизвестно",
     photo: "photos/smoking.jpg"
   },
@@ -115,6 +116,17 @@ const ART_OBJECTS = [
     title: "Выживыший",
     authors: ["LAZY aka Лентяй"],
     date: "Июль 2015",
+    destroyed: true,
+    desc: "",
+    photo: "photos/survivor.jpg"
+  },
+  {
+    lat: 54.069708, 
+    lng: 54.926426,
+    title: "Выживыший",
+    authors: ["LAZY aka Лентяй"],
+    date: "Июль 2015",
+    destroyed: true,
     desc: "",
     photo: "photos/survivor.jpg"
   },
