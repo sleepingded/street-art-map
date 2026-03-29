@@ -63,11 +63,16 @@ ART_OBJECTS.forEach((obj, i) => {
     ? `<img class="list-item-thumb" src="${obj.photo}" alt="" />`
     : `<div class="list-item-thumb-placeholder"></div>`;
 
+  const authorStr = obj.authors && obj.authors.length > 0
+    ? obj.authors.join(', ')
+    : 'неизвестен';
+  const metaParts = [authorStr, obj.date].filter(Boolean);
+
   li.innerHTML = `
     ${thumb}
     <div class="list-item-info">
       <div class="list-item-title">${obj.title}</div>
-      <div class="list-item-meta">${[obj.author, obj.date].filter(Boolean).join(' · ')}</div>
+      <div class="list-item-meta" data-date="${obj.date || ''}">${metaParts.join(' · ')}</div>
     </div>
   `;
   li.addEventListener('click', () => {
@@ -124,11 +129,28 @@ function openPanel(obj, idx) {
     ph.style.display  = 'flex';
   }
 
-  // Текстовые поля
-  document.getElementById('panel-title').textContent  = obj.title;
-  document.getElementById('panel-desc').textContent   = obj.desc;
-  document.getElementById('panel-author').textContent = obj.author || '—';
-  document.getElementById('panel-date').textContent   = obj.date   || '—';
+  document.getElementById('panel-title').textContent = obj.title;
+  document.getElementById('panel-desc').textContent  = obj.desc;
+
+  // Авторы
+  const authorsEl = document.getElementById('panel-authors');
+  authorsEl.innerHTML = '';
+  if (obj.authors && obj.authors.length > 0) {
+    obj.authors.forEach(a => {
+      const tag = document.createElement('span');
+      tag.className = 'author-tag';
+      tag.textContent = a;
+      authorsEl.appendChild(tag);
+    });
+  } else {
+    const tag = document.createElement('span');
+    tag.className = 'author-tag unknown';
+    tag.textContent = 'неизвестен';
+    authorsEl.appendChild(tag);
+  }
+
+  // Дата
+  document.getElementById('panel-date').textContent = obj.date || '—';
 
   // Открываем панель
   panel.classList.add('open');

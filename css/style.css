@@ -204,7 +204,27 @@ header .count span {
   gap: 16px;
 }
 
-.meta-item label {
+#panel-authors {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 2px;
+}
+
+.author-tag {
+  font-size: 0.72rem;
+  color: var(--text);
+  background: rgba(255,255,255,0.05);
+  border: 1px solid var(--border);
+  padding: 2px 8px;
+  white-space: nowrap;
+}
+
+.author-tag.unknown {
+  color: var(--muted);
+  font-style: italic;
+  border-style: dashed;
+}
   display: block;
   font-size: 0.6rem;
   letter-spacing: 0.2em;
