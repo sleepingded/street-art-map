@@ -4,7 +4,29 @@
    изменить поведение карты или панели.
    ══════════════════════════════════════════════════════════ */
 
-/* ─── ИНИЦИАЛИЗАЦИЯ КАРТЫ ──────────────────────────────── */
+/* ─── ФОРМАТИРОВАНИЕ ДАТЫ ──────────────────────────────── */
+
+function formatDate(raw) {
+  if (!raw) return '—';
+
+  const parts = raw.split('-');
+  const year  = parts[0];
+  const month = parts[1];
+
+  if (!month) return year; // только год — выводим как есть
+
+  const date = new Date(parseInt(year), parseInt(month) - 1, 1);
+  return date.toLocaleDateString('ru-RU', { month: 'long', year: 'numeric' });
+  // Выводит: "июнь 2021" → делаем первую букву заглавной
+}
+
+// Первую букву заглавной: "июнь 2021" → "Июнь 2021"
+function fmtDate(raw) {
+  const str = formatDate(raw);
+  return str.charAt(0).toUpperCase() + str.slice(1);
+}
+
+
 
 // Центр карты вычисляется только по объектам с координатами
 const geoObjects = ART_OBJECTS.filter(o => o.lat && o.lng);
@@ -88,8 +110,8 @@ function openClusterPopup(group) {
       ? obj.authors.join(', ')
       : 'неизвестен';
     li.innerHTML = `
-      <div class="cluster-item-title ${obj.destroyed ? 'is-destroyed' : ''}">${obj.title}</div>
-      <div class="cluster-item-meta">${[authorStr, obj.date].filter(Boolean).join(' · ')}${obj.destroyed ? ' · <span style="color:var(--accent2)">уничтожено</span>' : ''}</div>
+      <div class="cluster-item-title">${obj.title}</div>
+      <div class="cluster-item-meta">${[authorStr, fmtDate(obj.date)].filter(s => s && s !== '—').join(' · ')}${obj.destroyed ? ' · <span style="color:var(--accent2)">уничтожено</span>' : ''}</div>
     `;
     li.addEventListener('click', () => {
       closeClusterPopup();
@@ -115,10 +137,54 @@ const listToggle = document.getElementById('list-toggle');
 const listClose  = document.getElementById('list-close');
 const listItems  = document.getElementById('list-items');
 
-// Наполняем список
-ART_OBJECTS.forEach((obj, i) => {
-  const li = document.createElement('li');
+// Состояние сортировки и фильтров
+let currentSort      = 'date-desc';
+let destroyedLast    = false;
+let activeAuthors    = new Set(); // пустой = все авторы
 
+// Собираем уникальных авторов из всех объектов
+const allAuthors = [...new Set(
+  ART_OBJECTS.flatMap(o => o.authors && o.authors.length ? o.authors : [])
+)].sort();
+
+// Рендерим кнопки фильтра по авторам
+const listAuthorsEl = document.getElementById('list-authors');
+allAuthors.forEach(author => {
+  const btn = document.createElement('button');
+  btn.className = 'author-filter-btn';
+  btn.textContent = author;
+  btn.addEventListener('click', () => {
+    if (activeAuthors.has(author)) {
+      activeAuthors.delete(author);
+      btn.classList.remove('active');
+    } else {
+      activeAuthors.add(author);
+      btn.classList.add('active');
+    }
+    renderList();
+  });
+  listAuthorsEl.appendChild(btn);
+});
+
+// Кнопки сортировки
+document.querySelectorAll('.sort-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.sort-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    currentSort = btn.dataset.sort;
+    renderList();
+  });
+});
+
+// Переключатель «уничтоженные в конце»
+document.getElementById('destroyed-last').addEventListener('change', e => {
+  destroyedLast = e.target.checked;
+  renderList();
+});
+
+// Создаём DOM-элемент для одного объекта
+function createListItem(obj, i) {
+  const li = document.createElement('li');
   const noCoords = !obj.lat || !obj.lng;
 
   const thumb = obj.photo
@@ -128,12 +194,12 @@ ART_OBJECTS.forEach((obj, i) => {
   const authorStr = obj.authors && obj.authors.length > 0
     ? obj.authors.join(', ')
     : 'неизвестен';
-  const metaParts = [authorStr, obj.date].filter(Boolean);
+  const metaParts = [authorStr, fmtDate(obj.date)].filter(s => s && s !== '—');
 
   li.innerHTML = `
     ${thumb}
     <div class="list-item-info">
-      <div class="list-item-title ${obj.destroyed ? 'is-destroyed' : ''}">${obj.title}</div>
+      <div class="list-item-title">${obj.title}</div>
       <div class="list-item-meta" data-date="${obj.date || ''}">${metaParts.join(' · ')}</div>
       ${obj.destroyed ? '<div class="list-item-no-coords" style="color:var(--accent2)">уничтожено</div>' : ''}
       ${noCoords ? '<div class="list-item-no-coords">координаты неизвестны</div>' : ''}
@@ -144,8 +210,49 @@ ART_OBJECTS.forEach((obj, i) => {
     if (!noCoords) map.setView([obj.lat, obj.lng], 16, { animate: true });
     openPanel(obj, i);
   });
-  listItems.appendChild(li);
-});
+
+  return li;
+}
+
+// Сортировка
+function sortObjects(arr) {
+  const sorted = [...arr];
+  if (currentSort === 'date-desc') {
+    sorted.sort((a, b) => (b.obj.date || '').localeCompare(a.obj.date || ''));
+  } else if (currentSort === 'date-asc') {
+    sorted.sort((a, b) => (a.obj.date || '').localeCompare(b.obj.date || ''));
+  } else if (currentSort === 'title') {
+    sorted.sort((a, b) => a.obj.title.localeCompare(b.obj.title, 'ru'));
+  }
+  if (destroyedLast) {
+    sorted.sort((a, b) => (a.obj.destroyed ? 1 : 0) - (b.obj.destroyed ? 1 : 0));
+  }
+  return sorted;
+}
+
+// Фильтрация
+function filterObjects(arr) {
+  if (activeAuthors.size === 0) return arr;
+  return arr.filter(({ obj }) =>
+    obj.authors && obj.authors.some(a => activeAuthors.has(a))
+  );
+}
+
+// Главная функция — перерисовываем список
+function renderList() {
+  listItems.innerHTML = '';
+  const indexed = ART_OBJECTS.map((obj, i) => ({ obj, i }));
+  const filtered = filterObjects(indexed);
+  const sorted   = sortObjects(filtered);
+  sorted.forEach(({ obj, i }) => {
+    listItems.appendChild(createListItem(obj, i));
+  });
+}
+
+// Первичный рендер
+renderList();
+
+
 
 const isMobile = () => window.innerWidth <= 600;
 
@@ -230,7 +337,7 @@ function openPanel(obj, idx) {
   }
 
   // Дата
-  document.getElementById('panel-date').textContent = obj.date || '—';
+  document.getElementById('panel-date').textContent = fmtDate(obj.date);
 
   // Открываем панель
   panel.classList.add('open');

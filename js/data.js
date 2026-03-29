@@ -26,7 +26,7 @@ const ART_OBJECTS = [
     lng: 54.922630,
     title: "Гагарин",
     authors: [],
-    date: "Март 2019",
+    date: "2019-03",
     desc: "",
     photo: "photos/gagarin.jpg"
   },
@@ -35,7 +35,7 @@ const ART_OBJECTS = [
     lng: 54.934768,
     title: "Растаман",
     authors: ["LAZY aka Лентяй"],
-    date: "Апрель 2015",
+    date: "2015-04",
     desc: "",
     photo: "photos/tunnel.jpg"
   },
@@ -44,7 +44,7 @@ const ART_OBJECTS = [
     lng: 54.938609,
     title: "Арбуз",
     authors: ["LAZY aka Лентяй"],
-    date: "Февраль 2020",
+    date: "2020-02",
     desc: "",
     photo: "photos/watermelon.jpg"
   },
@@ -53,7 +53,7 @@ const ART_OBJECTS = [
     lng: 54.935994,
     title: "Забор",
     authors: ["LAZY aka Лентяй"],
-    date: "Июнь 2021",
+    date: "2021-06",
     desc: "",
     photo: "photos/fence.jpg"
   },
@@ -62,7 +62,7 @@ const ART_OBJECTS = [
     lng: 54.933794,
     title: "Мясо",
     authors: ["LAZY aka Лентяй"],
-    date: "Ноябрь 2021",
+    date: "2021-11",
     desc: "",
     photo: "photos/meat.jpg"
   },
@@ -71,7 +71,7 @@ const ART_OBJECTS = [
     lng: 54.929119,
     title: "Гомер",
     authors: ["LAZY aka Лентяй"],
-    date: "Июль 2016",
+    date: "2016-07",
     desc: "",
     photo: "photos/homer_1.jpg"
   },
@@ -80,7 +80,7 @@ const ART_OBJECTS = [
     lng: 54.928458,
     title: "Рыба",
     authors: ["LAZY aka Лентяй"],
-    date: "Март 2016",
+    date: "2016-03",
     desc: "",
     photo: "photos/fish.jpg"
   },
@@ -89,7 +89,7 @@ const ART_OBJECTS = [
     lng: 54.924015,
     title: "Магаз",
     authors: ["LAZY aka Лентяй", "Graff"],
-    date: "Сентябрь 2015",
+    date: "2015-09",
     desc: "",
     photo: "photos/store.jpg"
   },
@@ -98,14 +98,14 @@ const ART_OBJECTS = [
     lng: 54.926426,
     title: "Енот",
     authors: ["LAZY aka Лентяй"],
-    date: "Июль 2015",
+    date: "2015-07",
     desc: "",
     photo: "photos/raccon.jpg"
   },
   {
     title: "Курение убивает",
     authors: ["LAZY aka Лентяй"],
-    date: "Май 2022",
+    date: "2022-05",
     destroyed: true,
     desc: "Точное местоположение неизвестно",
     photo: "photos/smoking.jpg"
@@ -115,17 +115,7 @@ const ART_OBJECTS = [
     lng: 54.926426,
     title: "Выживыший",
     authors: ["LAZY aka Лентяй"],
-    date: "Июль 2015",
-    destroyed: true,
-    desc: "",
-    photo: "photos/survivor.jpg"
-  },
-  {
-    lat: 54.069708, 
-    lng: 54.926426,
-    title: "Выживыший",
-    authors: ["LAZY aka Лентяй"],
-    date: "Июль 2015",
+    date: "2015-07",
     destroyed: true,
     desc: "",
     photo: "photos/survivor.jpg"

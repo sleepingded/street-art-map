@@ -392,6 +392,99 @@ header .count span {
   box-shadow: 0 0 0 2px var(--accent), 0 0 20px rgba(232,255,0,0.6);
 }
 
+/* ─── СОРТИРОВКА И ФИЛЬТР ─────────────────────────────── */
+#list-controls {
+  border-bottom: 1px solid var(--border);
+  padding: 10px 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  flex-shrink: 0;
+}
+
+#list-sort {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.sort-btn {
+  font-family: var(--font-body);
+  font-size: 0.65rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+  background: none;
+  border: 1px solid var(--border);
+  padding: 3px 10px;
+  cursor: pointer;
+  transition: color 0.15s, border-color 0.15s;
+}
+
+.sort-btn:hover {
+  color: var(--text);
+  border-color: var(--text);
+}
+
+.sort-btn.active {
+  color: var(--accent);
+  border-color: var(--accent);
+}
+
+.sort-toggle {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 0.65rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+  cursor: pointer;
+  margin-left: auto;
+  user-select: none;
+}
+
+.sort-toggle input {
+  accent-color: var(--accent);
+  cursor: pointer;
+}
+
+.sort-toggle:hover {
+  color: var(--text);
+}
+
+#list-authors {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  min-height: 0;
+}
+
+.author-filter-btn {
+  font-family: var(--font-body);
+  font-size: 0.65rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+  background: none;
+  border: 1px solid var(--border);
+  padding: 3px 10px;
+  cursor: pointer;
+  transition: color 0.15s, border-color 0.15s, background 0.15s;
+}
+
+.author-filter-btn:hover {
+  color: var(--text);
+  border-color: var(--text);
+}
+
+.author-filter-btn.active {
+  color: #000;
+  background: var(--accent);
+  border-color: var(--accent);
+}
+
 /* ─── СПИСОК ОБЪЕКТОВ ─────────────────────────────────── */
 #list-panel {
   position: fixed;
@@ -531,17 +624,14 @@ header .count span {
 }
 
 .panel-title.is-destroyed {
-  /* text-decoration: line-through; */
   opacity: 0.5;
 }
 
 .list-item-title.is-destroyed {
-  /* text-decoration: line-through; */
   opacity: 0.45;
 }
 
 .cluster-item-title.is-destroyed {
-  /* text-decoration: line-through; */
   opacity: 0.45;
 }
 
