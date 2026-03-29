@@ -138,9 +138,8 @@ const listClose  = document.getElementById('list-close');
 const listItems  = document.getElementById('list-items');
 
 // Состояние сортировки и фильтров
-let currentSort      = 'date-desc';
-let destroyedLast    = false;
-let activeAuthors    = new Set(); // пустой = все авторы
+let currentSort   = 'date-desc';
+let activeAuthors = new Set();
 
 // Собираем уникальных авторов из всех объектов
 const allAuthors = [...new Set(
@@ -176,13 +175,17 @@ document.querySelectorAll('.sort-btn').forEach(btn => {
   });
 });
 
-// Переключатель «уничтоженные в конце»
-document.getElementById('destroyed-last').addEventListener('change', e => {
-  destroyedLast = e.target.checked;
-  renderList();
-});
-
-// Создаём DOM-элемент для одного объекта
+function sortObjects(arr) {
+  const sorted = [...arr];
+  if (currentSort === 'date-desc') {
+    sorted.sort((a, b) => (b.obj.date || '').localeCompare(a.obj.date || ''));
+  } else if (currentSort === 'date-asc') {
+    sorted.sort((a, b) => (a.obj.date || '').localeCompare(b.obj.date || ''));
+  } else if (currentSort === 'title') {
+    sorted.sort((a, b) => a.obj.title.localeCompare(b.obj.title, 'ru'));
+  }
+  return sorted;
+}
 function createListItem(obj, i) {
   const li = document.createElement('li');
   const noCoords = !obj.lat || !obj.lng;
@@ -223,9 +226,6 @@ function sortObjects(arr) {
     sorted.sort((a, b) => (a.obj.date || '').localeCompare(b.obj.date || ''));
   } else if (currentSort === 'title') {
     sorted.sort((a, b) => a.obj.title.localeCompare(b.obj.title, 'ru'));
-  }
-  if (destroyedLast) {
-    sorted.sort((a, b) => (a.obj.destroyed ? 1 : 0) - (b.obj.destroyed ? 1 : 0));
   }
   return sorted;
 }

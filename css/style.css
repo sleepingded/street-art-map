@@ -224,13 +224,18 @@ header .count span {
   color: var(--muted);
   font-style: italic;
   border-style: dashed;
+}
+
+.meta-item label {
   display: block;
   font-size: 0.6rem;
   letter-spacing: 0.2em;
   text-transform: uppercase;
   color: var(--muted);
   margin-bottom: 4px;
+  cursor: default;
 }
+
 
 .meta-item span {
   font-size: 0.78rem;
@@ -430,28 +435,6 @@ header .count span {
 .sort-btn.active {
   color: var(--accent);
   border-color: var(--accent);
-}
-
-.sort-toggle {
-  display: flex;
-  align-items: center;
-  gap: 5px;
-  font-size: 0.65rem;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--muted);
-  cursor: pointer;
-  margin-left: auto;
-  user-select: none;
-}
-
-.sort-toggle input {
-  accent-color: var(--accent);
-  cursor: pointer;
-}
-
-.sort-toggle:hover {
-  color: var(--text);
 }
 
 #list-authors {
