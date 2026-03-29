@@ -108,5 +108,14 @@ const ART_OBJECTS = [
     date: "Май 2022",
     desc: "Точное местоположение неизвестно",
     photo: "photos/smoking.jpg"
-  }
+  },
+  {
+    lat: 54.069708, 
+    lng: 54.926426,
+    title: "Выживыший",
+    authors: ["LAZY aka Лентяй"],
+    date: "Июль 2015",
+    desc: "",
+    photo: "photos/survivor.jpg"
+  },
 ];

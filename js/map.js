@@ -38,19 +38,75 @@ document.getElementById('art-count').textContent = ART_OBJECTS.length;
 
 let activeMarkerEl = null;
 
+// Группируем объекты по координатам
+const coordGroups = {};
 ART_OBJECTS.forEach((obj, i) => {
-  if (!obj.lat || !obj.lng) return; // нет координат — нет маркера
+  if (!obj.lat || !obj.lng) return;
+  const key = `${obj.lat},${obj.lng}`;
+  if (!coordGroups[key]) coordGroups[key] = [];
+  coordGroups[key].push({ obj, i });
+});
+
+// Создаём один маркер на каждую уникальную точку
+Object.values(coordGroups).forEach(group => {
+  const { obj } = group[0];
+  const isCluster = group.length > 1;
+  const size = isCluster ? 26 : 20;
 
   const icon = L.divIcon({
     className: '',
-    html: `<div class="custom-marker" data-i="${i}"></div>`,
-    iconSize: [20, 20],
-    iconAnchor: [10, 10]
+    html: isCluster
+      ? `<div class="custom-marker cluster">${group.length}</div>`
+      : `<div class="custom-marker" data-i="${group[0].i}"></div>`,
+    iconSize: [size, size],
+    iconAnchor: [size / 2, size / 2]
   });
 
   const marker = L.marker([obj.lat, obj.lng], { icon }).addTo(map);
-  marker.on('click', () => openPanel(obj, i));
+
+  marker.on('click', () => {
+    if (isCluster) {
+      openClusterPopup(group);
+    } else {
+      openPanel(group[0].obj, group[0].i);
+    }
+  });
 });
+
+/* ─── ПОПАП КЛАСТЕРА ───────────────────────────────────── */
+
+const clusterPopup     = document.getElementById('cluster-popup');
+const clusterPopupList = document.getElementById('cluster-popup-list');
+
+function openClusterPopup(group) {
+  closePanel();
+  clusterPopupList.innerHTML = '';
+
+  group.forEach(({ obj, i }) => {
+    const li = document.createElement('li');
+    const authorStr = obj.authors && obj.authors.length > 0
+      ? obj.authors.join(', ')
+      : 'неизвестен';
+    li.innerHTML = `
+      <div class="cluster-item-title">${obj.title}</div>
+      <div class="cluster-item-meta">${[authorStr, obj.date].filter(Boolean).join(' · ')}</div>
+    `;
+    li.addEventListener('click', () => {
+      closeClusterPopup();
+      openPanel(obj, i);
+    });
+    clusterPopupList.appendChild(li);
+  });
+
+  clusterPopup.classList.add('open');
+}
+
+function closeClusterPopup() {
+  clusterPopup.classList.remove('open');
+}
+
+document.getElementById('cluster-popup-close').addEventListener('click', closeClusterPopup);
+map.on('click', closeClusterPopup);
 
 /* ─── СПИСОК ОБЪЕКТОВ ──────────────────────────────────── */
 

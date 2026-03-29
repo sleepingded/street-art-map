@@ -280,6 +280,119 @@ header .count span {
   opacity: 0.8;
 }
 
+/* ─── ПОПАП КЛАСТЕРА ──────────────────────────────────── */
+#cluster-popup {
+  position: fixed;
+  bottom: 32px;
+  left: 50%;
+  transform: translateX(-50%) translateY(20px);
+  width: 280px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  z-index: 3000;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.6);
+}
+
+#cluster-popup.open {
+  opacity: 1;
+  pointer-events: all;
+  transform: translateX(-50%) translateY(0);
+}
+
+#cluster-popup-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 14px;
+  border-bottom: 1px solid var(--border);
+  font-size: 0.65rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+#cluster-popup-close {
+  width: 22px;
+  height: 22px;
+  background: none;
+  border: 1px solid var(--border);
+  color: var(--muted);
+  font-size: 0.75rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.15s, color 0.15s;
+}
+
+#cluster-popup-close:hover {
+  background: var(--accent2);
+  border-color: var(--accent2);
+  color: #fff;
+}
+
+#cluster-popup-list {
+  list-style: none;
+  max-height: 240px;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: var(--border) transparent;
+}
+
+#cluster-popup-list li {
+  padding: 10px 14px;
+  border-bottom: 1px solid var(--border);
+  cursor: pointer;
+  transition: background 0.12s;
+  font-size: 0.8rem;
+}
+
+#cluster-popup-list li:last-child {
+  border-bottom: none;
+}
+
+#cluster-popup-list li:hover {
+  background: rgba(232,255,0,0.06);
+}
+
+.cluster-item-title {
+  font-family: var(--font-head);
+  font-size: 1rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: #fff;
+  margin-bottom: 2px;
+  transition: color 0.12s;
+}
+
+#cluster-popup-list li:hover .cluster-item-title {
+  color: var(--accent);
+}
+
+.cluster-item-meta {
+  font-size: 0.65rem;
+  color: var(--muted);
+  letter-spacing: 0.08em;
+}
+
+/* Маркер с несколькими работами */
+.custom-marker.cluster {
+  background: var(--accent);
+  width: 26px;
+  height: 26px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.65rem;
+  font-weight: 700;
+  color: #000;
+  font-family: var(--font-body);
+  box-shadow: 0 0 0 2px var(--accent), 0 0 20px rgba(232,255,0,0.6);
+}
+
 /* ─── СПИСОК ОБЪЕКТОВ ─────────────────────────────────── */
 #list-panel {
   position: fixed;
