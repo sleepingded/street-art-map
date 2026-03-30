@@ -31,29 +31,48 @@
   <!-- Боковая панель -->
   <div id="panel">
     <button id="close-btn" title="Закрыть">✕</button>
-    <!-- Галерея -->
-    <div id="panel-gallery">
-      <img id="panel-img" class="panel-photo" src="" alt="" style="display:none" />
-      <div id="panel-placeholder" class="panel-photo-placeholder">нет фото</div>
-      <button id="gallery-prev" class="gallery-btn" style="display:none">&#8249;</button>
-      <button id="gallery-next" class="gallery-btn" style="display:none">&#8250;</button>
-      <div id="gallery-counter" style="display:none"></div>
-    </div>
-    <div class="panel-body">
-      <div id="panel-tag" class="panel-tag">стрит-арт</div>
-      <div id="panel-title" class="panel-title"></div>
-      <div id="panel-desc" class="panel-desc"></div>
-      <div class="panel-meta">
-        <div class="meta-item">
-          <label>Авторы</label>
-          <div id="panel-authors"></div>
-        </div>
-        <div class="meta-item">
-          <label>Дата</label>
-          <span id="panel-date">—</span>
+
+    <!-- Карточка объекта -->
+    <div id="artwork-view">
+      <!-- Галерея -->
+      <div id="panel-gallery">
+        <img id="panel-img" class="panel-photo" src="" alt="" style="display:none" />
+        <div id="panel-placeholder" class="panel-photo-placeholder">нет фото</div>
+        <button id="gallery-prev" class="gallery-btn" style="display:none">&#8249;</button>
+        <button id="gallery-next" class="gallery-btn" style="display:none">&#8250;</button>
+        <div id="gallery-counter" style="display:none"></div>
+      </div>
+      <div class="panel-body">
+        <div id="panel-tag" class="panel-tag">стрит-арт</div>
+        <div id="panel-title" class="panel-title"></div>
+        <div id="panel-desc" class="panel-desc"></div>
+        <div class="panel-meta">
+          <div class="meta-item">
+            <label>Авторы</label>
+            <div id="panel-authors"></div>
+          </div>
+          <div class="meta-item">
+            <label>Дата</label>
+            <span id="panel-date">—</span>
+          </div>
         </div>
       </div>
     </div>
+
+    <!-- Профиль автора -->
+    <div id="author-view" style="display:none; flex-direction:column; flex:1; overflow:hidden">
+      <div id="author-photo-wrap">
+        <img id="author-photo" src="" alt="" style="display:none" />
+        <div id="author-photo-placeholder">?</div>
+      </div>
+      <div class="panel-body">
+        <div class="panel-tag">автор</div>
+        <div id="author-name" class="panel-title"></div>
+        <div id="author-bio" class="panel-desc"></div>
+        <div id="author-links"></div>
+      </div>
+    </div>
+
   </div>
 
   <!-- Список объектов -->
@@ -84,6 +103,7 @@
 
   <!-- Данные и логика -->
   <script src="js/data.js"></script>
+  <script src="js/authors.js"></script>
   <script src="js/map.js"></script>
 
 </body>

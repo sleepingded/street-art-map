@@ -357,24 +357,23 @@ function openPanel(obj, idx) {
   if (existingBadge) existingBadge.remove();
   const titleEl = document.getElementById('panel-title');
   if (obj.destroyed) {
-    titleEl.classList.add('is-destroyed');
     const badge = document.createElement('div');
     badge.id = 'destroyed-badge';
     badge.className = 'destroyed-badge';
     badge.textContent = 'уничтожено';
     titleEl.insertAdjacentElement('beforebegin', badge);
-  } else {
-    titleEl.classList.remove('is-destroyed');
   }
 
-  // Авторы
+  // Авторы — кликабельные теги если есть профиль
   const authorsEl = document.getElementById('panel-authors');
   authorsEl.innerHTML = '';
   if (obj.authors && obj.authors.length > 0) {
     obj.authors.forEach(a => {
       const tag = document.createElement('span');
-      tag.className = 'author-tag';
+      const hasProfile = AUTHORS && AUTHORS[a];
+      tag.className = 'author-tag' + (hasProfile ? ' clickable' : '');
       tag.textContent = a;
+      if (hasProfile) tag.addEventListener('click', () => openAuthorProfile(a));
       authorsEl.appendChild(tag);
     });
   } else {
@@ -387,7 +386,58 @@ function openPanel(obj, idx) {
   // Дата
   document.getElementById('panel-date').textContent = fmtDate(obj.date);
 
+  // Показываем карточку объекта, скрываем профиль
+  document.getElementById('artwork-view').style.display = '';
+  document.getElementById('author-view').style.display  = 'none';
+
   // Открываем панель
+  panel.classList.add('open');
+  if (isMobile()) overlay.classList.add('visible');
+}
+
+/* ─── ПРОФИЛЬ АВТОРА ───────────────────────────────────── */
+
+function openAuthorProfile(name) {
+  const author = AUTHORS[name];
+  if (!author) return;
+
+  // Фото или заглушка
+  const photo = document.getElementById('author-photo');
+  const ph    = document.getElementById('author-photo-placeholder');
+  if (author.photo) {
+    photo.src           = author.photo;
+    photo.style.display = 'block';
+    ph.style.display    = 'none';
+  } else {
+    photo.style.display = 'none';
+    ph.style.display    = 'flex';
+    ph.textContent      = name.charAt(0).toUpperCase();
+  }
+
+  // Имя и биография
+  document.getElementById('author-name').textContent = author.name;
+  const bioEl = document.getElementById('author-bio');
+  bioEl.textContent = author.bio || 'Биография отсутствует';
+  bioEl.style.color = author.bio ? '' : 'var(--muted)';
+
+  // Ссылки
+  const linksEl = document.getElementById('author-links');
+  linksEl.innerHTML = '';
+  (author.links || []).forEach(link => {
+    const a = document.createElement('a');
+    a.className = 'author-link';
+    a.textContent = link.label;
+    a.href        = link.url;
+    a.target      = '_blank';
+    a.rel         = 'noopener noreferrer';
+    linksEl.appendChild(a);
+  });
+
+  // Скрываем карточку объекта, показываем профиль
+  document.getElementById('artwork-view').style.display = 'none';
+  document.getElementById('author-view').style.display  = 'flex';
+
+  // Открываем панель если ещё не открыта
   panel.classList.add('open');
   if (isMobile()) overlay.classList.add('visible');
 }

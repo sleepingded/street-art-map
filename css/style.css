@@ -91,8 +91,8 @@ header .count span {
 
 /* ─── МАРКЕР ──────────────────────────────────────────── */
 .custom-marker {
-  width: 15px;
-  height: 15px;
+  width: 20px;
+  height: 20px;
   border-radius: 50%;
   background: var(--accent);
   border: 2px solid var(--bg);
@@ -109,6 +109,98 @@ header .count span {
 .custom-marker.active {
   background: var(--accent2);
   box-shadow: 0 0 0 2px var(--accent2), 0 0 24px rgba(255,60,60,0.7);
+}
+
+/* ─── ПРОФИЛЬ АВТОРА ──────────────────────────────────── */
+#artwork-view {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: var(--border) transparent;
+}
+
+#author-view {
+  flex: 1;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: var(--border) transparent;
+}
+
+.author-tag.clickable {
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s, border-color 0.15s;
+}
+
+.author-tag.clickable:hover {
+  background: rgba(232,255,0,0.15);
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+#author-photo-wrap {
+  width: 100%;
+  aspect-ratio: 4/3;
+  flex-shrink: 0;
+  background: #1a1a1a;
+}
+
+#author-photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+#author-photo-placeholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-head);
+  font-size: 4rem;
+  color: var(--border);
+  background: repeating-linear-gradient(
+    45deg,
+    #1a1a1a 0px, #1a1a1a 10px,
+    #141414 10px, #141414 20px
+  );
+}
+
+#author-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 24px;
+}
+
+.author-link {
+  font-size: 0.68rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent);
+  border: 1px solid rgba(232,255,0,0.3);
+  padding: 4px 12px;
+  text-decoration: none;
+  transition: background 0.15s, color 0.15s;
+}
+
+.author-link:hover {
+  background: var(--accent);
+  color: #000;
+}
+
+.author-tag.clickable {
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s, border-color 0.15s;
+}
+
+.author-tag.clickable:hover {
+  background: rgba(232,255,0,0.15);
+  border-color: var(--accent);
+  color: var(--accent);
 }
 
 /* ─── ГАЛЕРЕЯ ─────────────────────────────────────────── */
@@ -333,8 +425,8 @@ header .count span {
 /* Маркер с несколькими работами */
 .custom-marker.cluster {
   background: var(--accent);
-  width: 20px;
-  height: 20px;
+  width: 26px;
+  height: 26px;
   display: flex;
   align-items: center;
   justify-content: center;
