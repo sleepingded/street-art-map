@@ -874,30 +874,23 @@ header .count span {
     border-top: 1px solid var(--border);
     transform: translateY(100%);
     transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    overflow-y: auto;
   }
 
   #panel.open {
     transform: translateY(0);
   }
 
+  /* На мобильном artwork-view и author-view не скроллятся сами —
+     скроллится весь #panel */
   #artwork-view {
-    overflow-y: auto;
-    flex: 1;
+    overflow-y: visible;
+    flex: none;
   }
 
-  /* Галерея не фиксируется — уходит вверх при скролле */
-  #panel-gallery {
-    flex-shrink: 0;
-  }
-
-  /* Панель автора тоже скроллится целиком */
   #author-view {
-    overflow-y: auto;
-    flex: 1;
-  }
-
-  #author-photo-wrap {
-    flex-shrink: 0;
+    overflow-y: visible;
+    flex: none;
   }
 
   /* 2. Панель списка */

@@ -245,4 +245,110 @@ const ART_OBJECTS = [
     desc: "",
     photos: ["photos/elevator_1.jpg", "photos/elevator_2.jpg"]
   },
+  {
+    title: "Крик",
+    authors: ["LAZY aka Лентяй"],
+    date: "2015-01-17",
+    desc: "Где-то на территории третьей школы, возможно уничтожено",
+    photos: ["photos/scream_1.jpg", "photos/scream_2.jpg"]
+  },
+  {
+    title: "Барт",
+    authors: ["LAZY aka Лентяй"],
+    date: "2015-01-17",
+    desc: "Возможно уничтожено",
+    photos: ["photos/bart_1.jpg"]
+  },
+  {
+    title: "Облака",
+    authors: ["LAZY aka Лентяй"],
+    date: "2015-04-25",
+    desc: "Возможно уничтожено",
+    photos: ["photos/clouds_1.jpg"]
+  },
+  {
+    title: "8 марта",
+    authors: ["LAZY aka Лентяй"],
+    date: "2015-04-25",
+    desc: "Надпись закрасили",
+    photos: ["photos/eight_march.jpg"]
+  },
+  {
+    title: "Всем привет",
+    authors: ["LAZY aka Лентяй"],
+    date: "2015-04-29",
+    desc: "",
+    photos: ["photos/hello.jpg"]
+  },
+  {
+    title: "Серая масса",
+    authors: ["LAZY aka Лентяй"],
+    date: "2015-05-01",
+    desc: "",
+    photos: ["photos/grey_mass_1.jpg"]
+  },
+  {
+    lat: 54.067456,
+    lng: 54.922547,
+    title: "Буковки",
+    authors: ["LAZY aka Лентяй"],
+    date: "2015-05-17",
+    destroyed: true,
+    desc: "Уничтожено через 5 часов после создания",
+    photos: ["photos/letters.jpg"]
+  },
+  {
+    title: "Цветочки",
+    authors: ["LAZY aka Лентяй"],
+    date: "2015-05-30",
+    desc: "",
+    photos: ["photos/flowers.jpg"]
+  },
+  {
+    lat: 54.069493, 
+    lng: 54.929930,
+    title: "Кот",
+    authors: ["LAZY aka Лентяй"],
+    date: "2015-05-30",
+    destroyed: true,
+    desc: "",
+    photos: ["photos/cat.jpg"]
+  },
+  {
+    title: "Не будь мной",
+    authors: ["LAZY aka Лентяй"],
+    date: "2015-05-30",
+    desc: "",
+    photos: ["photos/dontbeme.jpg"]
+  },
+  {
+    lat: 54.068916,
+    lng: 54.930149,
+    title: "Автопортрет",
+    authors: ["LAZY aka Лентяй"],
+    date: "2015-07-11",
+    destroyed: true,
+    desc: "Закрашен автором для граффити 'Цой'",
+    photos: ["photos/selfportrait.jpg"]
+  },
+  {
+    lat: 54.066412, 
+    lng: 54.922119,
+    title: "Быть свободным",
+    authors: ["LAZY aka Лентяй"],
+    date: "2015-08-02",
+    destroyed: true,
+    desc: "Где-то перед первой школой",
+    photos: ["photos/be_free_1.jpg", "photos/be_free_2.jpg"]
+  },
+  {
+    lat: 54.068677, 
+    lng: 54.935669,
+    title: "Растаман 2",
+    authors: ["LAZY aka Лентяй"],
+    date: "2015-08-02",
+    destroyed: true,
+    desc: "Заменено на граффити 'С днем победы'",
+    photos: ["photos/rastaman_1.jpg", "photos/rastaman_2.jpg"]
+  },
 ];
