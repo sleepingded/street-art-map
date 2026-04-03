@@ -376,9 +376,42 @@ function openPanel(obj, idx) {
   initGallery(photos);
 
   document.getElementById('panel-title').textContent = obj.title;
-  document.getElementById('panel-desc').textContent  = obj.desc || 'Описание отсутствует';
-  if (!obj.desc) document.getElementById('panel-desc').style.color = 'var(--muted)';
-  else document.getElementById('panel-desc').style.color = '';
+  // Описание с поддержкой [[Ссылок на объекты]]
+  const descEl = document.getElementById('panel-desc');
+  const rawDesc = obj.desc || '';
+  if (!rawDesc) {
+    descEl.textContent = 'Описание отсутствует';
+    descEl.style.color = 'var(--muted)';
+  } else {
+    descEl.style.color = '';
+    // Разбиваем текст по паттерну [[...]]
+    const parts = rawDesc.split(/(\[\[.+?\]\])/g);
+    descEl.innerHTML = '';
+    parts.forEach(part => {
+      const match = part.match(/^\[\[(.+?)\]\]$/);
+      if (match) {
+        const targetTitle = match[1];
+        const targetIdx   = ART_OBJECTS.findIndex(o => o.title === targetTitle);
+        if (targetIdx !== -1) {
+          const link = document.createElement('span');
+          link.className   = 'desc-link';
+          link.textContent = targetTitle;
+          link.addEventListener('click', () => {
+            openPanel(ART_OBJECTS[targetIdx], targetIdx);
+            if (ART_OBJECTS[targetIdx].lat && ART_OBJECTS[targetIdx].lng) {
+              map.setView([ART_OBJECTS[targetIdx].lat, ART_OBJECTS[targetIdx].lng], 16, { animate: true });
+            }
+          });
+          descEl.appendChild(link);
+        } else {
+          // Объект не найден — показываем текст без ссылки
+          descEl.appendChild(document.createTextNode(targetTitle));
+        }
+      } else {
+        descEl.appendChild(document.createTextNode(part));
+      }
+    });
+  }
 
   // Пометка «уничтожено»
   const existingBadge = document.getElementById('destroyed-badge');

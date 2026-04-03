@@ -39,5 +39,11 @@ const AUTHORS = {
     photo: "",
     bio:   "",
     links: []
-  }
+  },
+  "Blik": {
+    name:  "Blik",
+    photo: "",
+    bio:   "",
+    links: []
+  },
 };
