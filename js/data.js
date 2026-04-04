@@ -45,6 +45,7 @@ const ART_OBJECTS = [
     title: "Арбуз",
     authors: ["LAZY aka Лентяй"],
     date: "2020-02",
+    status: "exists",
     desc: "",
     photos: ["photos/watermelon.jpg"]
   },
@@ -106,7 +107,7 @@ const ART_OBJECTS = [
     title: "Курение убивает",
     authors: ["LAZY aka Лентяй"],
     date: "2022-05",
-    // destroyed: true,
+    // status: "destroyed",
     desc: "Точное местоположение неизвестно",
     photos: ["photos/smoking_1.jpg", "photos/smoking_2.jpg"]
   },
@@ -293,7 +294,7 @@ const ART_OBJECTS = [
     title: "Буковки",
     authors: ["LAZY aka Лентяй"],
     date: "2015-05-17",
-    destroyed: true,
+    status: "destroyed",
     desc: "Уничтожено через 5 часов после создания",
     photos: ["photos/letters.jpg"]
   },
@@ -310,7 +311,7 @@ const ART_OBJECTS = [
     title: "Кот",
     authors: ["LAZY aka Лентяй"],
     date: "2015-05-30",
-    destroyed: true,
+    status: "destroyed",
     desc: "",
     photos: ["photos/cat.jpg"]
   },
@@ -327,7 +328,7 @@ const ART_OBJECTS = [
     title: "Автопортрет",
     authors: ["LAZY aka Лентяй"],
     date: "2015-07-11",
-    destroyed: true,
+    status: "destroyed",
     desc: "Закрашен автором для граффити [[Цой]]",
     photos: ["photos/selfportrait.jpg"]
   },
@@ -337,7 +338,7 @@ const ART_OBJECTS = [
     title: "Быть свободным",
     authors: ["LAZY aka Лентяй"],
     date: "2015-08-02",
-    destroyed: true,
+    status: "destroyed",
     desc: "Где-то перед первой школой",
     photos: ["photos/be_free_1.jpg", "photos/be_free_2.jpg"]
   },
@@ -347,7 +348,7 @@ const ART_OBJECTS = [
     title: "Растаман 2",
     authors: ["LAZY aka Лентяй"],
     date: "2015-08-02",
-    destroyed: true,
+    status: "destroyed",
     desc: "Заменено на граффити [[С днем победы]]",
     photos: ["photos/rastaman_1.jpg", "photos/rastaman_2.jpg"]
   },
@@ -357,7 +358,7 @@ const ART_OBJECTS = [
     title: "Цой",
     authors: ["LAZY aka Лентяй","Graff", "Mr. S"],
     date: "2015-09-06",
-    destroyed: true,
+    status: "destroyed",
     desc: "Закрашен, заменен на [[Деньги зло]]",
     photos: ["photos/soy.jpg"]
   },
@@ -397,7 +398,7 @@ const ART_OBJECTS = [
     title: "Боб Марли",
     authors: ["LAZY aka Лентяй","Graff"],
     date: "2015-11-29",
-    destroyed: true,
+    status: "destroyed",
     desc: "Не уверен по координатам",
     photos: ["photos/bob_marley.jpg"]
   },
@@ -407,7 +408,7 @@ const ART_OBJECTS = [
     title: "Окси",
     authors: ["LAZY aka Лентяй"],
     date: "2016-08-13",
-    destroyed: true,
+    status: "destroyed",
     desc: "Не уверен по координатам",
     photos: ["photos/oxy_1.jpg", "photos/oxy_2.jpg"]
   },
@@ -445,7 +446,7 @@ const ART_OBJECTS = [
     title: "Камо",
     authors: ["LAZY aka Лентяй"],
     date: "2016-10-14",
-    destroyed: true,
+    status: "destroyed",
     desc: "Заменено на [[Гагарин]]",
     photos: ["photos/camo_1.jpg", "photos/camo_2.jpg"]
   },
@@ -462,7 +463,7 @@ const ART_OBJECTS = [
     title: "Ф. Кастро",
     authors: ["LAZY aka Лентяй", "Blik"],
     date: "2016-12-03",
-    destroyed: true,
+    status: "destroyed",
     desc: "Закрашено",
     photos: ["photos/castro_1.jpg","photos/castro_2.jpg"]
   },
@@ -472,7 +473,7 @@ const ART_OBJECTS = [
     title: "БЛИК",
     authors: ["Blik"],
     date: "2016-11-08",
-    destroyed: true,
+    status: "destroyed",
     desc: "Где-то позади бывшего кафе'Колос'",
     photos: ["photos/blik_1.jpg","photos/blik_2.jpg"]
   },
@@ -489,6 +490,7 @@ const ART_OBJECTS = [
     title: "Джейк",
     authors: ["LAZY aka Лентяй"],
     date: "2017-01-25",
+    status: "exists",
     desc: "",
     photos: ["photos/jake_1.jpg","photos/jake_2.jpg"]
   },
@@ -496,6 +498,7 @@ const ART_OBJECTS = [
     title: "Идея",
     authors: ["LAZY aka Лентяй"],
     date: "2017-03-19",
+    status: "unconfirmed",
     desc: "",
     photos: ["photos/idea_1.jpg","photos/idea_2.jpg"]
   },
@@ -505,6 +508,7 @@ const ART_OBJECTS = [
     title: "Красло",
     authors: ["LAZY aka Лентяй"],
     date: "2017-05-31",
+    status: "unconfirmed",
     desc: "По координатам не уверен",
     photos: ["photos/paint_1.jpg","photos/paint_2.jpg"]
   },
@@ -514,6 +518,7 @@ const ART_OBJECTS = [
     title: "БЛИК 2",
     authors: ["Blik"],
     date: "2017-05-31",
+    status: "unconfirmed",
     desc: "По координатам не уверен",
     photos: ["photos/paint_3.jpg"]
   },
@@ -521,6 +526,7 @@ const ART_OBJECTS = [
     title: "Выйди за рамки",
     authors: ["LAZY aka Лентяй"],
     date: "2017-11-01",
+    status: "unconfirmed",
     desc: "Где-то возле второй школы",
     photos: ["photos/go_beyond_1.jpg","photos/go_beyond_2.jpg"]
   },
@@ -528,6 +534,7 @@ const ART_OBJECTS = [
     title: "Открытия",
     authors: ["LAZY aka Лентяй"],
     date: "2017-11-07",
+    status: "unconfirmed",
     desc: "",
     photos: ["photos/openings.jpg"]
   },
@@ -535,6 +542,7 @@ const ART_OBJECTS = [
     title: "Призрак улиц",
     authors: ["LAZY aka Лентяй"],
     date: "2017-12-02",
+    status: "unconfirmed",
     desc: "",
     photos: ["photos/town_ghosts.jpg"]
   },
@@ -542,6 +550,7 @@ const ART_OBJECTS = [
     title: "Не примыкай к серой массе",
     authors: ["LAZY aka Лентяй"],
     date: "2017-12-12",
+    status: "unconfirmed",
     desc: "",
     photos: ["photos/new_grey_mass.jpg"]
   },
@@ -549,6 +558,7 @@ const ART_OBJECTS = [
     title: "Айкью",
     authors: ["LAZY aka Лентяй"],
     date: "2017-12-26",
+    status: "unconfirmed",
     desc: "",
     photos: ["photos/iq.jpg"]
   },
@@ -556,6 +566,7 @@ const ART_OBJECTS = [
     title: "Бонг",
     authors: ["LAZY aka Лентяй"],
     date: "2018-02-10",
+    status: "unconfirmed",
     desc: "",
     photos: ["photos/bong_1.jpg", "photos/bong_2.jpg"]
   },
@@ -563,6 +574,7 @@ const ART_OBJECTS = [
     title: "Мне не до сна",
     authors: ["LAZY aka Лентяй"],
     date: "2018-02-12",
+    status: "unconfirmed",
     desc: "",
     photos: ["photos/sleep.jpg"]
   },
@@ -570,6 +582,7 @@ const ART_OBJECTS = [
     title: "Всем love",
     authors: ["LAZY aka Лентяй"],
     date: "2018-02-14",
+    status: "unconfirmed",
     desc: "",
     photos: ["photos/plush_bear.jpg"]
   },
@@ -577,6 +590,7 @@ const ART_OBJECTS = [
     title: "Алкоголь",
     authors: ["LAZY aka Лентяй"],
     date: "2018-04-04",
+    status: "unconfirmed",
     desc: "",
     photos: ["photos/alcohol.jpg"]
   },
@@ -586,7 +600,7 @@ const ART_OBJECTS = [
     title: "Попробуй мне запретить",
     authors: ["LAZY aka Лентяй"],
     date: "2018-05-19",
-    destroyed: true,
+    status: "destroyed",
     desc: "",
     photos: ["photos/try_to_ban_1.jpg", "photos/try_to_ban_2.jpg"]
   },
@@ -596,7 +610,7 @@ const ART_OBJECTS = [
     title: "Ной 2",
     authors: ["Noy"],
     date: "2018-05-19",
-    destroyed: true,
+    status: "destroyed",
     desc: "",
     photos: ["photos/second_noy_1.jpg", "photos/second_noy_1.jpg"]
   },
@@ -606,7 +620,7 @@ const ART_OBJECTS = [
     title: "Ной 3",
     authors: ["Noy"],
     date: "2018-10-13",
-    destroyed: true,
+    status: "destroyed",
     desc: "",
     photos: ["photos/third_noy_1.jpg"]
   },
@@ -616,7 +630,7 @@ const ART_OBJECTS = [
     title: "Розы",
     authors: ["LAZY aka Лентяй"],
     date: "2018-10-13",
-    destroyed: true,
+    status: "destroyed",
     desc: "",
     photos: ["photos/roses_1.jpg", "photos/roses_2.jpg"]
   },
@@ -626,7 +640,7 @@ const ART_OBJECTS = [
     title: "Убить время",
     authors: ["LAZY aka Лентяй"],
     date: "2019-07-19",
-    destroyed: true,
+    status: "destroyed",
     desc: "",
     photos: ["photos/time_killer_1.jpg", "photos/time_killer_2.jpg"]
   },
@@ -634,6 +648,7 @@ const ART_OBJECTS = [
     title: "VK ТОЧКА COM",
     authors: ["LAZY aka Лентяй"],
     date: "2018-06-01",
+    status: "unconfirmed",
     desc: "",
     photos: ["photos/vk.jpg"]
   },
@@ -643,7 +658,7 @@ const ART_OBJECTS = [
     title: "Делать то, что запрещено",
     authors: ["LAZY aka Лентяй"],
     date: "2018-05-19",
-    destroyed: true,
+    status: "painted_over",
     desc: "",
     photos: ["photos/forbidden_1.jpg", "photos/forbidden_2.jpg"]
   },
@@ -653,7 +668,7 @@ const ART_OBJECTS = [
     title: "Гарфилд 2",
     authors: ["LAZY aka Лентяй"],
     date: "2018-09-16",
-    destroyed: true,
+    status: "painted_over",
     desc: "",
     photos: ["photos/second_garfield_1.jpg", "photos/second_garfield_2.jpg"]
   },
@@ -663,7 +678,7 @@ const ART_OBJECTS = [
     title: "Смайл",
     authors: ["LAZY aka Лентяй"],
     date: "2020-07-03",
-    destroyed: true,
+    status: "painted_over",
     desc: "",
     photos: ["photos/orange_1.jpg"]
   },
@@ -671,6 +686,7 @@ const ART_OBJECTS = [
     title: "Телефон",
     authors: ["LAZY aka Лентяй"],
     date: "2018-11-19",
+    status: "unconfirmed",
     desc: "Рядом с [[Пикачу]]",
     photos: ["photos/phone_1.jpg", "photos/phone_2.jpg"]
   },
@@ -678,6 +694,7 @@ const ART_OBJECTS = [
     title: "Мозги",
     authors: ["LAZY aka Лентяй"],
     date: "2018-12-31",
+    status: "unconfirmed",
     desc: "",
     photos: ["photos/brains_1.jpg", "photos/brains_2.jpg"]
   },
@@ -685,13 +702,7 @@ const ART_OBJECTS = [
     title: "Интернет",
     authors: ["LAZY aka Лентяй", "Noy"],
     date: "2019-05-07",
-    desc: "",
-    photos: ["photos/internet.jpg"]
-  },
-  {
-    title: "Интернет",
-    authors: ["LAZY aka Лентяй", "Noy"],
-    date: "2019-05-07",
+    status: "unconfirmed",
     desc: "",
     photos: ["photos/internet.jpg"]
   },
@@ -699,6 +710,7 @@ const ART_OBJECTS = [
     title: "Кусок",
     authors: ["LAZY aka Лентяй"],
     date: "2019-06-02",
+    status: "unconfirmed",
     desc: "",
     photos: ["photos/peace.jpg"]
   },
@@ -708,7 +720,7 @@ const ART_OBJECTS = [
     title: "Жизнь-Смерть",
     authors: ["LAZY aka Лентяй"],
     date: "2019-06-28",
-    destroyed: true,
+    status: "destroyed",
     desc: "",
     photos: ["photos/life.jpg"]
   },
@@ -718,7 +730,7 @@ const ART_OBJECTS = [
     title: "Туалет",
     authors: ["LAZY aka Лентяй"],
     date: "2019-10-13",
-    destroyed: true,
+    status: "painted_over",
     desc: "",
     photos: ["photos/toilet_1.jpg", "photos/toilet_2.jpg"]
   },
@@ -726,6 +738,7 @@ const ART_OBJECTS = [
     title: "Книга",
     authors: ["LAZY aka Лентяй"],
     date: "2019-10-26",
+    status: "unconfirmed",
     desc: "Книги - пища для ума 📕",
     photos: ["photos/book_1.jpg"]
   },
@@ -733,6 +746,7 @@ const ART_OBJECTS = [
     title: "Говно",
     authors: ["LAZY aka Лентяй"],
     date: "2018-10-03",
+    status: "unconfirmed",
     desc: "",
     photos: ["photos/govno.jpg"]
   },
@@ -740,7 +754,7 @@ const ART_OBJECTS = [
     title: "Жопа",
     authors: ["LAZY aka Лентяй"],
     date: "2018-07-07",
-    destroyed: true,
+    status: "destroyed",
     desc: "",
     photos: ["photos/jopa.jpg"]
   },

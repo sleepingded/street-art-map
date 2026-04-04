@@ -755,32 +755,28 @@ header .count span {
   font-size: 0.68rem;
   color: var(--muted);
   letter-spacing: 0.1em;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
 }
 
-/* Уничтоженные работы */
-.destroyed-badge {
+/* Статусы объектов */
+.status-badge {
   display: inline-block;
   font-size: 0.62rem;
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: var(--accent2);
-  border: 1px solid var(--accent2);
   padding: 2px 8px;
   margin-bottom: 10px;
-  opacity: 0.85;
+  border: 1px solid;
 }
 
-.panel-title.is-destroyed {
-  opacity: 0.5;
-}
-
-.list-item-title.is-destroyed {
-  opacity: 0.45;
-}
-
-.cluster-item-title.is-destroyed {
-  opacity: 0.45;
-}
+.status-badge.exists       { color: #4caf50; border-color: #4caf50; background: rgba(76,175,80,0.08); }
+.status-badge.painted_over { color: #ff9800; border-color: #ff9800; background: rgba(255,152,0,0.08); }
+.status-badge.damaged      { color: #ff5722; border-color: #ff5722; background: rgba(255,87,34,0.08); }
+.status-badge.destroyed    { color: var(--accent2); border-color: var(--accent2); background: rgba(255,60,60,0.08); }
+.status-badge.unconfirmed  { color: var(--muted); border-color: var(--muted); background: rgba(102,102,102,0.08); }
+.status-badge.updated      { color: #2196f3; border-color: #2196f3; background: rgba(33,150,243,0.08); }
 
 
 #lightbox {

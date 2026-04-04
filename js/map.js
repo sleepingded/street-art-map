@@ -40,7 +40,34 @@ function setHeaderHeight() {
 setHeaderHeight();
 window.addEventListener('resize', setHeaderHeight);
 
-/* ─── ФОРМАТИРОВАНИЕ ДАТЫ ──────────────────────────────── */
+/* ─── СТАТУСЫ ОБЪЕКТОВ ─────────────────────────────────── */
+
+const STATUS_CONFIG = {
+  exists:       { label: 'Существует',      cls: 'exists'       },
+  painted_over: { label: 'Закрашено',       cls: 'painted_over' },
+  damaged:      { label: 'Повреждено',      cls: 'damaged'      },
+  destroyed:    { label: 'Уничтожено',      cls: 'destroyed'    },
+  unconfirmed:  { label: 'Не подтверждено', cls: 'unconfirmed'  },
+  updated:      { label: 'Обновлено',       cls: 'updated'      },
+};
+
+function getStatus(obj) {
+  return STATUS_CONFIG[obj.status] || STATUS_CONFIG['exists'];
+}
+
+function getStatusColor(status) {
+  const colors = {
+    exists:       '#4caf50',
+    painted_over: '#ff9800',
+    damaged:      '#ff5722',
+    destroyed:    'var(--accent2)',
+    unconfirmed:  'var(--muted)',
+    updated:      '#2196f3',
+  };
+  return colors[status] || colors['exists'];
+}
+
+
 
 function formatDate(raw) {
   if (!raw) return 'Неизвестно';
@@ -208,8 +235,11 @@ function createListItem(obj, i) {
     ${thumb}
     <div class="list-item-info">
       <div class="list-item-title">${obj.title}</div>
-      <div class="list-item-meta" data-date="${obj.date || ''}">${metaParts.join(' · ')}</div>
-      ${obj.destroyed ? '<div class="list-item-no-coords" style="color:var(--accent2)">уничтожено</div>' : ''}
+      <div class="list-item-meta">
+        <span>${authorStr}</span>
+        <span>${formattedDate}</span>
+      </div>
+      ${obj.status ? `<div class="list-item-no-coords" style="color:${getStatusColor(obj.status)}">${getStatus(obj).label}</div>` : ''}
       ${noCoords ? '<div class="list-item-no-coords">координаты неизвестны</div>' : ''}
     </div>
   `;
@@ -413,15 +443,16 @@ function openPanel(obj, idx) {
     });
   }
 
-  // Пометка «уничтожено»
-  const existingBadge = document.getElementById('destroyed-badge');
+  // Бейдж статуса
+  const existingBadge = document.getElementById('status-badge');
   if (existingBadge) existingBadge.remove();
   const titleEl = document.getElementById('panel-title');
-  if (obj.destroyed) {
+  const status  = getStatus(obj);
+  if (obj.status) {
     const badge = document.createElement('div');
-    badge.id = 'destroyed-badge';
-    badge.className = 'destroyed-badge';
-    badge.textContent = 'уничтожено';
+    badge.id        = 'status-badge';
+    badge.className = `status-badge ${status.cls}`;
+    badge.textContent = status.label;
     titleEl.insertAdjacentElement('beforebegin', badge);
   }
 
